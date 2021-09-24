@@ -1,4 +1,4 @@
-import useStyles from "./styles";
+import useStyles from "../Form/styles";
 import {
   Card,
   CardContent,
@@ -46,14 +46,14 @@ const CarCard = ({ item, carModel, handleChange}) => {
         </div>
           </CardContent>
 
-        <Radio
+        {handleChange && <Radio
         className={classes.radio}
         checked={carModel === item.model}
         onChange={handleChange}
         value={item.model}
         name="radio-buttons-car"
         inputProps={{ 'aria-label': item.model }}
-      />
+      />}
     </Card>
   );
 };

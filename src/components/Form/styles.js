@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
     width: 285,
   },
   card: {
-    height: 380,
+    height : 'max-content'
   },
   cardInfo: {
     flexDirection: "column",

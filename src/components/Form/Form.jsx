@@ -1,13 +1,16 @@
+import { useState, useEffect } from "react";
+
 import useStyles from "./styles";
+import carData from "../../data/carData";
+import CarCard from "../Cards/CarCard";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import carData from "./carData";
-import CarCard from "./CarCard";
 
+import { useHistory } from "react-router-dom";
 import MomentUtils from "@date-io/moment";
+
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
@@ -31,10 +34,10 @@ const Form = () => {
   const [selectedStartDate, handleStartDateChange] = useState(new Date());
   const [selectedEndDate, handleEndDateChange] = useState(new Date());
   const [numberOfDays, setNumberOfDays] = useState();
-  const [totalPrice, setTotalPrice] = useState()
-
+  const [totalPrice, setTotalPrice] = useState();
   const [carModel, setCarModel] = useState("Fiesta");
   const [chosenCar, setChosenCar] = useState({});
+
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -75,9 +78,9 @@ const Form = () => {
     setNumberOfDays(Math.round(Difference_In_Time / (1000 * 3600 * 24)));
   }, [selectedStartDate, selectedEndDate]);
 
-  useEffect(() =>{
-    setTotalPrice(chosenCar.price * numberOfDays)
-  },[chosenCar, numberOfDays])
+  useEffect(() => {
+    setTotalPrice(chosenCar.price * numberOfDays);
+  }, [chosenCar, numberOfDays]);
 
   useEffect(() => {
     setChosenCar(carData.find(({ model }) => model === carModel));
@@ -163,7 +166,6 @@ const Form = () => {
                 </FormHelperText>
               </Grid>
             </Grid>
-            {/* <Divider variant="middle" /> */}
             <Typography
               variant="h6"
               component="h3"
@@ -225,14 +227,15 @@ const Form = () => {
                 </MuiPickersUtilsProvider>
               </Grid>
             </Grid>
-              <Typography
-                variant="h6"
-                component="h5"
-                className={classes.header}
-                gutterBottom
-              >
-                Renting the {chosenCar.make} {chosenCar.model} for {numberOfDays} days will cost: £{totalPrice}
-              </Typography>
+            <Typography
+              variant="h6"
+              component="h5"
+              className={classes.header}
+              gutterBottom
+            >
+              Renting the {chosenCar.make} {chosenCar.model} for {numberOfDays}{" "}
+              days will cost: £{totalPrice}
+            </Typography>
 
             <Box mt={3}>
               <Button
@@ -240,7 +243,7 @@ const Form = () => {
                 color="primary"
                 onClick={handleSubmit(onSubmit)}
               >
-                Register
+                Submit
               </Button>
             </Box>
           </Paper>

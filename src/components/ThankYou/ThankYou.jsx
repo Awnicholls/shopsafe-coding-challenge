@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
+
+import { Typography } from "@material-ui/core";
+
 import { useHistory } from "react-router-dom";
+import useStyles from "./styles";
+
 import Success from "./Success";
+
 const ThankYou = () => {
+  const classes = useStyles();
+
   const [formCompleted, setFormCompleted] = useState(false);
 
   useEffect(() => {
@@ -10,7 +18,7 @@ const ThankYou = () => {
     }
   }, [formCompleted]);
 
-  let history = useHistory();
+  const history = useHistory();
 
   function gotoHome() {
     if (!localStorage.getItem("form")) {
@@ -20,14 +28,17 @@ const ThankYou = () => {
 
   return (
     <>
-      <div>Thank You</div>
-      <div>
-        {formCompleted ? (
-          <Success/>
-        ) : (
-          <div>{gotoHome()} </div>
-        )}
-      </div>
+      <main>
+        <Typography
+          variant="h2"
+          component="h1"
+          className={classes.title}
+          gutterBottom
+        >
+          Thank You
+        </Typography>
+        <div>{formCompleted ? <Success /> : <div>{gotoHome()} </div>}</div>
+      </main>
     </>
   );
 };
