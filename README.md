@@ -5,7 +5,7 @@ The form itself is styled with Material Ui in order to make it easier to crete s
 
 What I would hope to add is various checks for the date picker, not allowing the end date to be before the start, as well as conditional rendering of fields that rely on inputs. Currently the text at the bottom of the form will always say days even if it is one day and will show negative values.
 
-You can check out the LIVE project [**HERE**](https://awnicholls.github.io/shopsafe-coding-challenge 'Completed project').
+You can check out the LIVE project [**HERE**](https://unruffled-yonath-dce904.netlify.app/ 'Completed project').
 
 ---
 
